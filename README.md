@@ -1,8 +1,8 @@
-# Wazuh SIEM on Proxmox LXC
+# 🕵🏼 Wazuh SIEM on Proxmox LXC
 
 This project documents the complete installation and configuration of a Wazuh SIEM server running in a Proxmox LXC container using Docker. It covers everything from creating the container to deploying a Windows agent and configuring Audit Policies for threat detection.
 
-## 1. Create the LXC Container
+## 1. 🧊 Create the LXC Container
 *I am using Proxmox VE 9.1.2.*
 
 1.  Click on **Create CT** to bring up the config window.
@@ -21,7 +21,7 @@ This project documents the complete installation and configuration of a Wazuh SI
 8.  **DNS:** Use `8.8.8.8` and `1.1.1.1`.
 9.  Confirm and finish.
 
-## 2. Start & Verify Network
+## 2. 📶 Start & Verify Network
 Start the container via the UI or shell:
 ```bash
 pct start 101
@@ -34,7 +34,7 @@ ping -c 3 google.com
 ```
 You should see a response like `64 bytes from...`.
 
-## 3. Install Docker
+## 3. 🐳 Install Docker
 Update the system and install Docker inside the container:
 
 ```bash
@@ -50,9 +50,9 @@ docker --version
 ```
 It should return something like `Docker version 29.1.3`.
 
-## 4. Install Wazuh (Docker)
+## 4. 👁️‍🗨️ Install Wazuh (Docker)
 
-### Host Modification (Important!)
+### 🚨Host Modification (Important!)🚨
 Before running Wazuh, you must increase the memory mapping limit on the **Proxmox Host** (not the container).
 Run this in the Proxmox Shell:
 ```bash
@@ -72,7 +72,7 @@ docker compose up -d
 
 ![Installing Wazuh](images/installing-wazuh-in-docker.png)
 
-### 🔧 LXC Troubleshooting (Required)
+### 🩺 LXC Troubleshooting (Required)
 If the containers fail to start, you must edit `docker-compose.yml` to remove limits that LXC doesn't support.
 
 1.  `nano docker-compose.yml`
@@ -90,14 +90,14 @@ docker compose down
 docker compose up -d
 ```
 
-## 5. Web Interface Access
+## 5. 🌐 Web Interface Access
 Open your browser and navigate to `https://192.168.1.201` (or your IP). Accept the certificate warning.
 * **User:** `admin`
 * **Password:** `SecretPassword`
 
 ![Wazuh Login](images/wazuh-homepage.png)
 
-## 6. Deploying a Windows Agent
+## 6. 🪟 Deploying a Windows Agent
 1.  Click **"Deploy new agent"**.
 2.  Select **Windows**.
 3.  Enter the Server IP (`192.168.1.201`).
@@ -110,8 +110,6 @@ Open your browser and navigate to `https://192.168.1.201` (or your IP). Accept t
     NET START Wazuh
     ```
 
-![PowerShell Install](images/powershell-install.png)
-
 ### Verification
 Go to **Agents Summary**. You should now see **Active: (1)**.
 
@@ -121,10 +119,10 @@ Click on the agent to see the specific dashboard for that computer.
 
 ![Windows Dashboard](images/windows-agent-dashboard.png)
 
-## 7. Detecting Logon Failures (Simulation)
+## 7. 🛑 Detecting Logon Failures (Simulation)
 To test the system, we will simulate an attack.
 1.  Lock your Windows PC.
-2.  Type the wrong password several times.
+2.  Type the wrong a few times.
 3.  Log in correctly.
 
 ### Configuring Windows Audit Policy
@@ -146,4 +144,5 @@ You should now see a list of **Logon Failure** events (Event ID 4625).
 
 ![Logon Failure Events](images/logon-failure.png)
 
-**Congratulations! You now have a functional SIEM.**
+
+**🎉Congratulations! You now have a functional SIEM.🎉**
