@@ -122,7 +122,7 @@ Click on the agent to see the specific dashboard for that computer.
 ## 7. 🛑 Detecting Logon Failures (Simulation)
 To test the system, we will simulate an attack.
 1.  Lock your Windows PC.
-2.  Type the wrong a few times.
+2.  Type the wrong password a few times.
 3.  Log in correctly.
 
 ### Configuring Windows Audit Policy
@@ -148,4 +148,5 @@ You should now see a list of **Logon Failure** events (Event ID 4625).
 **🎉Congratulations! You now have a functional SIEM.🎉**
 ---
 *Created by [Me](https://github.com/JeNilSE)*
+
 
