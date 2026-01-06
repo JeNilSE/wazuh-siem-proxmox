@@ -1,3 +1,6 @@
+![Proxmox](https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 # 🕵🏼 Wazuh SIEM on Proxmox LXC
 
 This project documents the complete installation and configuration of a Wazuh SIEM server running in a Proxmox LXC container using Docker. It covers everything from creating the container to deploying a Windows agent and configuring Audit Policies for threat detection.
@@ -148,5 +151,6 @@ You should now see a list of **Logon Failure** events (Event ID 4625).
 **🎉Congratulations! You now have a functional SIEM.🎉**
 ---
 *Created by [Me](https://github.com/JeNilSE)*
+
 
 
