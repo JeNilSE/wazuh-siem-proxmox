@@ -73,8 +73,6 @@ docker compose -f generate-indexer-certs.yml run --rm generator
 docker compose up -d
 ```
 
-![Installing Wazuh](images/installing-wazuh-in-docker.png)
-
 ### 🩺 LXC Troubleshooting (Required)
 If the containers fail to start, you must edit `docker-compose.yml` to remove limits that LXC doesn't support.
 
@@ -95,17 +93,13 @@ docker compose up -d
 
 ## 5. 🌐 Web Interface Access
 Open your browser and navigate to `https://192.168.1.201` (or your IP). Accept the certificate warning.
-* **User:** `admin`
-* **Password:** `SecretPassword`
-
-![Wazuh Login](images/wazuh-homepage.png)
+* **User:** `[REDACTED]`
+* **Password:** `[REDACTED]`
 
 ## 6. 🪟 Deploying a Windows Agent
 1.  Click **"Deploy new agent"**.
 2.  Select **Windows**.
 3.  Enter the Server IP (`192.168.1.201`).
-
-![Deploy Agent Wizard](images/deploy-new-agent.png)
 
 4.  Copy the generated command and run it in **PowerShell (Admin)** on the Windows PC.
 5.  Start the service:
@@ -116,11 +110,7 @@ Open your browser and navigate to `https://192.168.1.201` (or your IP). Accept t
 ### Verification
 Go to **Agents Summary**. You should now see **Active: (1)**.
 
-![Active Agents](images/active-agents.png)
-
 Click on the agent to see the specific dashboard for that computer.
-
-![Windows Dashboard](images/windows-agent-dashboard.png)
 
 ## 7. 🛑 Detecting Logon Failures (Simulation)
 To test the system, we will simulate an attack.
@@ -135,22 +125,19 @@ By default, Windows might not log failed attempts. To fix this:
 3.  Open **Audit logon events**.
 4.  Check **Failure** and apply.
 
-![Audit Policy Config](images/audit-policy.png)
 
 ### Viewing the Events
 If events are not showing up in Wazuh, check the time filter in the **Threat Hunting** tab.
 Change the time from "Absolute" to **"Now"** to see live events.
 
-![Change Time Filter](images/change-time.png)
 
 You should now see a list of **Logon Failure** events (Event ID 4625).
-
-![Logon Failure Events](images/logon-failure.png)
 
 
 **🎉Congratulations! You now have a functional SIEM.🎉**
 ---
 *Created by [Me](https://github.com/JeNilSE)*
+
 
 
 
